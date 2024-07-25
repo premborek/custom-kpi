@@ -1,0 +1,1095 @@
+{
+  "annotations": {
+    "enable": true,
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Configurational KPI",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 3,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "nm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Cisco\\-IOS\\-XR\\-controller\\-otu\\-oper:otu/controllers/controller/info\\.bandwidth$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bandwidth"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "title": "Bitrate",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 6,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Operational KPI",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "admin-down": {
+                  "color": "semi-dark-red",
+                  "index": 1
+                },
+                "down": {
+                  "color": "semi-dark-red",
+                  "index": 0
+                },
+                "up": {
+                  "color": "semi-dark-green",
+                  "index": 2
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Cisco\\-IOS\\-XR\\-controller\\-otu\\-oper:otu/controllers/controller/info\\.state$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "state"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "title": "Controller Status",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "sci"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 7
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Cisco\\-IOS\\-XR\\-controller\\-otu\\-oper:otu/controllers/controller/info\\.otu\\-fec\\-satistics__pre\\-fec\\-ber$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "otu-fec-satistics__pre-fec-ber"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "title": "Pre-FEC BER",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "sci"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 9,
+        "y": 7
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Cisco\\-IOS\\-XR\\-controller\\-otu\\-oper:otu/controllers/controller/info\\.otu\\-fec\\-satistics__post\\-fec\\-ber$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "otu-fec-satistics__post-fec-ber"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "title": "Post-FEC BER",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 13,
+        "y": 7
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Cisco\\-IOS\\-XR\\-controller\\-otu\\-oper:otu/controllers/controller/info\\.qfactor$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "qfactor"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "title": "Q Factor [dB]",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "pattern": "^(\\d+(?:\\.\\d+)?)\\s*dB$",
+                "result": {
+                  "index": 0,
+                  "text": "$1"
+                }
+              },
+              "type": "regex"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 17,
+        "y": 7
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Cisco\\-IOS\\-XR\\-controller\\-otu\\-oper:otu/controllers/controller/info\\.qmargin$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "qmargin"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "title": "Q Margin [dB]",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 269
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Q Factor [dB]"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 182
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Q Margin [dB]"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 216
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Q Factor [dB]"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "pattern": "^(\\d+(\\.\\d+)?)(dB)$",
+                      "result": {
+                        "index": 0,
+                        "text": "$1"
+                      }
+                    },
+                    "type": "regex"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Q Margin [dB]"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "pattern": "^(\\d+(\\.\\d+)?)(dB)$",
+                      "result": {
+                        "index": 0,
+                        "text": "$1"
+                      }
+                    },
+                    "type": "regex"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 9,
+        "x": 0,
+        "y": 12
+      },
+      "id": 19,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "",
+          "queryType": "randomWalk",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "qfactor"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "",
+          "queryType": "randomWalk",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "qmargin"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "controller-name",
+              "operator": "=~",
+              "value": "/^$controllername$/"
+            }
+          ]
+        }
+      ],
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info.qfactor": "Q Factor [dB]",
+              "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info.qmargin": "Q Margin [dB]"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Time"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Battipaglia-54",
+          "value": "Battipaglia-54"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "Router",
+        "options": [],
+        "query": "Show Tag Values from $RP.\"Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info\" WITH Key = \"Producer\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "CoherentDSP0/0/0/0",
+          "value": "CoherentDSP0/0/0/0"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "controllername",
+        "options": [],
+        "query": "SHOW TAG VALUES  FROM $RP.\"Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info\" WITH KEY= \"controller-name\"  where Producer =~ /^$Router$/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "bandwidth"
+          ],
+          "value": [
+            "bandwidth"
+          ]
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "Sensor",
+        "multi": true,
+        "name": "KpiFields",
+        "options": [
+          {
+            "selected": true,
+            "text": "bandwidth",
+            "value": "bandwidth"
+          },
+          {
+            "selected": false,
+            "text": "otu-fec-satistics__post-fec-ber",
+            "value": "otu-fec-satistics__post-fec-ber"
+          },
+          {
+            "selected": false,
+            "text": "otu-fec-satistics__pre-fec-ber",
+            "value": "otu-fec-satistics__pre-fec-ber"
+          },
+          {
+            "selected": false,
+            "text": "qfactor",
+            "value": "qfactor"
+          },
+          {
+            "selected": false,
+            "text": "qmargin",
+            "value": "qmargin"
+          },
+          {
+            "selected": false,
+            "text": "state",
+            "value": "state"
+          }
+        ],
+        "query": "bandwidth,otu-fec-satistics__post-fec-ber,otu-fec-satistics__pre-fec-ber,qfactor,qmargin,state",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "rp3d_1",
+          "value": "rp3d_1"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Retention",
+        "multi": false,
+        "name": "RP",
+        "options": [],
+        "query": "show retention policies",
+        "refresh": 1,
+        "regex": "rp3d_1",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "RON link KPIs: coherent layer",
+  "version": 2,
+  "weekStart": ""
+}

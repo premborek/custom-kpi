@@ -1,0 +1,66 @@
+{
+  "kpis": {
+    "kpi": [
+      {
+        "kpi_id": "ots_counters",
+        "kpi_name": "QDD-OLS KPIs",
+        "state": "complete",
+        "category": "RON KPI",
+        "summary": "Core KPIs for QDD-OLS FOADM",
+        "details": "Collected KPI: aggregated RX/TX power, Pre-Amp/Booster Gain",
+        "sensor_groups": {
+          "sensor_group": [
+            {
+              "cadence": {
+                "default": 300,
+                "min": 10,
+                "max": 1800,
+                "increment": 10
+              },
+              "sensor_paths": {
+                "sensor_path": [
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info/egress-ampli-gain"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info/egress-ampli-gain-config"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info/transmit-signal-power"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info/receive-signal-power"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "scripts": {
+          "script": [
+            {
+              "script_id": "ots_template.tick",
+              "script": "",
+              "template": "noop_master-template"
+            }
+          ]
+        },
+        "dashboards": {
+          "dashboard": [
+            {
+              "type": "jsonfile",
+              "value": "RON-link-KPIs-ots_dashboard.json",
+              "label": "Default"
+            }
+          ]
+        },
+        "sensor_type": "GNMI,YANG_MDT",
+        "module_and_revision": "Cisco-IOS-XR-controller-ots-oper:2015-11-09",
+        "created_by": "admin",
+        "creation_date": 1706620686,
+        "last_updated_by": "admin",
+        "last_updation_date": 1706620686
+      }
+    ]
+  }
+}

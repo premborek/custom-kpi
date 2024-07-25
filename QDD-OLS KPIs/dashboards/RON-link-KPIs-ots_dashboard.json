@@ -1,0 +1,1145 @@
+{
+  "annotations": {
+    "enable": true,
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p style=\"text-align:center;padding:10px 0\">\n    <span style=\"color:#2E7D08;font-family:Roboto;font-size:20pt;font-weight:500\">${Router}</span>\n</p>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.14",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "receive-signal-power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$com_interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "COM RX Power",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dB"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info.egress-ampli-gain-config"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Configured"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info.egress-ampli-gain"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "egress-ampli-gain-config"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 10"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$com_interface$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "egress-ampli-gain"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 10"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$com_interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "Pre-Amp Gain",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmit-signal-power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$line_interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "LINE TX Power",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 7
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmit-signal-power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$com_interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "COM TX Power",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dB"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info.egress-ampli-gain-config"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Configured"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info.egress-ampli-gain"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "egress-ampli-gain-config"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 10"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$line_interface$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "egress-ampli-gain"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 10"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$line_interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "Booster Gain",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 7
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.14",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "receive-signal-power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            },
+            {
+              "condition": "AND",
+              "key": "name::tag",
+              "operator": "=~",
+              "value": "/^$line_interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "LINE RX Power",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$col on [[tag_name]]",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "name::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "rp3d_1",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "receive-signal-power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            }
+          ]
+        },
+        {
+          "alias": "$col on [[tag_name]]",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "name::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info",
+          "orderByTime": "ASC",
+          "policy": "rp3d_1",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmit-signal-power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  " / 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Producer::tag",
+              "operator": "=~",
+              "value": "/^$Router$/"
+            }
+          ]
+        }
+      ],
+      "title": "RX / TX Signal Power: COM / LINE",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Ancona-18",
+          "value": "Ancona-18"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": true,
+        "name": "Router",
+        "options": [],
+        "query": "Show Tag Values from $RP.\"Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info\" WITH Key = \"Producer\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "Ots0/0/1/1/0",
+          "value": "Ots0/0/1/1/0"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "com_interface",
+        "options": [],
+        "query": "SHOW TAG VALUES  FROM $RP.\"Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info\" WITH KEY= \"name\"  where Producer =~ /^$Router$/",
+        "refresh": 1,
+        "regex": "^Ots\\d\\/\\d\\/\\d\\/\\d\\/0$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "egress-ampli-gain"
+          ],
+          "value": [
+            "egress-ampli-gain"
+          ]
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "Sensor",
+        "multi": true,
+        "name": "KpiFields",
+        "options": [
+          {
+            "selected": true,
+            "text": "egress-ampli-gain",
+            "value": "egress-ampli-gain"
+          },
+          {
+            "selected": false,
+            "text": "egress-ampli-gain-config",
+            "value": "egress-ampli-gain-config"
+          },
+          {
+            "selected": false,
+            "text": "transmit-signal-power",
+            "value": "transmit-signal-power"
+          }
+        ],
+        "query": "egress-ampli-gain,egress-ampli-gain-config,transmit-signal-power",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "rp3d_1",
+          "value": "rp3d_1"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Retention",
+        "multi": false,
+        "name": "RP",
+        "options": [],
+        "query": "show retention policies",
+        "refresh": 1,
+        "regex": "rp3d_1",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "Ots0/0/1/1/1",
+          "value": "Ots0/0/1/1/1"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "line_interface",
+        "options": [],
+        "query": "SHOW TAG VALUES  FROM $RP.\"Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info\" WITH KEY= \"name\"  where Producer =~ /^$Router$/",
+        "refresh": 1,
+        "regex": "^Ots\\d\\/\\d\\/\\d\\/\\d\\/1$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "Ots0/0/1/1/0",
+          "value": "Ots0/0/1/1/0"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "cd06b5dc-5423-44cc-af06-126587632180"
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "ots_interfaces",
+        "options": [],
+        "query": "SHOW TAG VALUES  FROM $RP.\"Cisco-IOS-XR-controller-ots-oper:ots-oper/ots-ports/ots-port/ots-info\" WITH KEY= \"name\"  where Producer =~ /^$Router$/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "QDD-OLS Peformance Dashboard",
+  "version": 1,
+  "weekStart": ""
+}

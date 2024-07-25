@@ -1,0 +1,87 @@
+{
+  "kpis": {
+    "kpi": [
+      {
+        "kpi_id": "core_optical_counters",
+        "kpi_name": "RON KPIs",
+        "state": "complete",
+        "category": "RON KPI",
+        "summary": "Core optical KPIs for RON link",
+        "details": "Collected KPI: chromatic dispersion, carrier wavelength, RX/TX power, laser state, OSNR, transceiver temperature",
+        "sensor_groups": {
+          "sensor_group": [
+            {
+              "cadence": {
+                "default": 60,
+                "min": 10,
+                "max": 1800,
+                "increment": 10
+              },
+              "sensor_paths": {
+                "sensor_path": [
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/cd"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/dwdm-carrier-frequency"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/dwdm-carrier-wavelength"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/lane-data/receive-power"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/lane-data/transmit-power"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/laser-state"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/optical-signal-to-noise-ratio"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info/temperature"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "scripts": {
+          "script": [
+            {
+              "script_id": "core_optical_counters_optical_power_rx_template.tick",
+              "script": "",
+              "template": "two_level_threshold-master-template",
+              "type": "stream",
+              "scope": "local"
+            },
+            {
+              "script_id": "core_optical_counters_optical_power_tx_template.tick",
+              "script": "",
+              "template": "two_level_threshold-master-template",
+              "type": "stream",
+              "scope": "local"
+            }            
+          ]
+        },
+        "dashboards": {
+          "dashboard": [
+            {
+              "type": "jsonfile",
+              "value": "RON-link-KPIs.json",
+              "label": "Default"
+            }
+          ]
+        },
+        "sensor_type": "GNMI,YANG_MDT",
+        "module_and_revision": "Cisco-IOS-XR-controller-optics-oper:2015-11-09",
+        "created_by": "admin",
+        "creation_date": 1685365220,
+        "last_updated_by": "admin",
+        "last_updation_date": 1685365220
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "kpis": {
+    "kpi": [
+      {
+        "kpi_id": "coherent_optical_counters",
+        "kpi_name": "RON KPIs - coherent layer",
+        "state": "complete",
+        "category": "RON KPI",
+        "summary": "Core optical KPIs for RON link",
+        "details": "Collected KPI: bandwidth, pre-fec ber, post-fec ber, q margin, q factor, state",
+        "sensor_groups": {
+          "sensor_group": [
+            {
+              "cadence": {
+                "default": 60,
+                "min": 10,
+                "max": 1800,
+                "increment": 10
+              },
+              "sensor_paths": {
+                "sensor_path": [
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info/bandwidth"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info/otu-fec-satistics/post-fec-ber"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info/otu-fec-satistics/pre-fec-ber"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info/qfactor"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info/qmargin"
+                  },
+                  {
+                    "path_id": "Cisco-IOS-XR-controller-otu-oper:otu/controllers/controller/info/state"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "scripts": {
+          "script": [
+            {
+              "script_id": "coherent_optical_counters_qfactor_template.tick",
+              "script": "",
+              "template": "noop_master-template"
+            }
+          ]
+        },
+        "dashboards": {
+          "dashboard": [
+            {
+              "type": "jsonfile",
+              "value": "RON-link-KPIs-coherent.json",
+              "label": "Default"
+            }
+          ]
+        },
+        "sensor_type": "GNMI,YANG_MDT",
+        "module_and_revision": "Cisco-IOS-XR-controller-otu-oper:2015-11-09",
+        "created_by": "admin",
+        "creation_date": 1684772962,
+        "last_updated_by": "admin",
+        "last_updation_date": 1684772962
+      }
+    ]
+  }
+}
