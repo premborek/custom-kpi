@@ -1,4 +1,4 @@
-# Custom Crosswork Health Insights KPIs For Cohenent Pluggables Monitoring
+# Custom Crosswork Health Insights KPIs For Coherent Pluggables Monitoring
 
 Cisco coherent interfaces offer advanced optical solutions for high-capacity, long-distance networking. These interfaces support data rates up to 800Gbps, utilizing advanced modulation formats like QPSK and 16-QAM for enhanced performance.
 * [QSP-DD400G data sheet](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-744377.html)
